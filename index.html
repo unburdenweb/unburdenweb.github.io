@@ -1,12 +1,46 @@
 <!DOCTYPE html>
-<html lang="en" style="scroll-behavior: smooth;">
+<!--
+  .   _ _  _ ___  _  _ ___  ___  _  _ _  _ .
+  |   | |  | |__] |  | |__] |  \ |__| |\ | |
+  |__ \_/  | |__] \_/| |  \ |__/ |  | | \| |
+  
+  W.E.B. [William E. Burden] // Helsinki, Finland
+  [Process Optimization & AI Workflows]
+
+=============================================================================
+[DEV_LOG_2026.07.24]
+=============================================================================
+If you are reading this, you are likely a developer or a technical recruiter.
+Welcome.
+
+My academic background is in Global Politics, Communications and my work history 
+is very Community and people based. I spend a lot of time thinking about the 
+macro-effects of automation, algorithms, and organizations. Because of this, 
+I look at alot of business processes through a socio-technical lens.
+
+At the same time, I believe in managing projects and code with enough technical 
+leverage to kill a horse. I write custom JavaScript data-mapping engines, complex 
+regex parsing structures, and custom Google Tag Manager script injections to make 
+automated data streams clean and usable.
+
+This portfolio is built on a "Zero-Build" philosophy. It is a fully reactive, 
+client-side flat-file CMS running entirely in a single file via Alpine.js and 
+Tailwind CSS CDNs. < It has a perfect Lighthouse score, zero dependencies to 
+maintain, and can be updated instantly from Github in seconds or less. > Note to self: Update this
+
+This is how I approach business processes: I eliminate structural bloat, build 
+human-level pipelines, and design directly for the operators, both real and robotic.
+=============================================================================
+-->
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>William Burden — AI & Process Automation</title>
+    <title>William Burden — AI & Process Automation Specialist</title>
+    
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Alpine.js CDN for clean, reactive logic -->
+    <!-- Alpine.js CDN for interactive state management -->
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -16,10 +50,12 @@
             theme: {
                 extend: {
                     colors: {
-                        dark: {
-                            900: '#070913', /* Deep space black background */
-                            800: '#0f1123', /* Frosted card base */
-                            700: '#1b1d36'
+                        brand: {
+                            50: '#f0f7ff',
+                            100: '#e0efff',
+                            500: '#105c8a', /* Accent blue from resume */
+                            600: '#0d4e75',
+                            900: '#0a3a57'
                         }
                     }
                 }
@@ -29,47 +65,76 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
         body { 
-            font-family: 'Inter', sans-serif; 
-            background-color: #070913;
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f5f8; /* Soft light slate background */
         }
-        /* Custom scrollbar to keep it sleek */
+        
+        /* Dillon-style Liquid Glass Panels */
+        .glass-panel {
+            position: relative;
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(30px) saturate(200%);
+            -webkit-backdrop-filter: blur(30px) saturate(200%);
+            border: 1.5px solid rgba(255, 255, 255, 0.8);
+            box-shadow:
+                inset 0 1px 0 rgba(255, 255, 255, 0.9),
+                inset 0 0 80px rgba(255, 255, 255, 0.15),
+                0 0 60px rgba(255, 255, 255, 0.04),
+                0 16px 48px rgba(0, 0, 0, 0.08),
+                0 8px 24px rgba(0, 0, 0, 0.05),
+                0 2px 8px rgba(0, 0, 0, 0.03);
+            transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s ease;
+        }
+        
+        .glass-panel:hover {
+            transform: translateY(-2px);
+            box-shadow:
+                inset 0 1px 0 rgba(255, 255, 255, 0.9),
+                inset 0 0 80px rgba(255, 255, 255, 0.15),
+                0 0 80px rgba(255, 255, 255, 0.08),
+                0 20px 60px rgba(0, 0, 0, 0.12),
+                0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Custom Scrollbar */
         ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #070913; }
-        ::-webkit-scrollbar-thumb { background: #1b1d36; border-radius: 4px; }
+        ::-webkit-scrollbar-track { background: #f3f5f8; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
     </style>
 </head>
-<body class="text-slate-100 antialiased relative min-h-screen overflow-x-hidden" x-data="portfolio" x-init="lucide.createIcons()">
+<body class="text-slate-700 antialiased relative min-h-screen overflow-x-hidden" x-data="portfolio" x-init="init()">
 
-    <!-- Ambient background glows -->
-    <div class="absolute top-[-10%] left-[20%] w-[600px] h-[600px] rounded-full bg-indigo-900/10 blur-[120px] pointer-events-none"></div>
-    <div class="absolute bottom-[20%] right-[10%] w-[500px] h-[500px] rounded-full bg-emerald-900/5 blur-[100px] pointer-events-none"></div>
+    <!-- Ambient glowing backgrounds (Dillon style) -->
+    <div class="absolute top-[-10%] left-[10%] w-[600px] h-[600px] rounded-full bg-blue-200/40 blur-[130px] pointer-events-none"></div>
+    <div class="absolute top-[30%] right-[5%] w-[500px] h-[500px] rounded-full bg-indigo-200/30 blur-[120px] pointer-events-none"></div>
 
-    <!-- Header Navigation -->
-    <nav class="sticky top-0 z-50 bg-dark-900/70 backdrop-blur-md border-b border-white/[0.06]">
+
+    <!-- ========================================================================= -->
+    <!--  [01] GLOBAL HEADER & NAVIGATION                                         -->
+    <!-- ========================================================================= -->
+    <nav class="sticky top-0 z-50 bg-white/70 backdrop-blur-md border-b border-slate-200/80">
         <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
-            <span class="font-bold text-sm tracking-tight text-white" x-text="personal.name"></span>
+            <span class="font-bold text-sm tracking-tight text-slate-900" x-text="personal.name"></span>
             
             <div class="flex items-center gap-6">
                 <!-- Resume Link -->
-                <a :href="personal.resumeUrl" target="_blank" class="text-xs font-semibold tracking-wider uppercase text-slate-400 hover:text-white transition duration-200">
+                <a :href="personal.resumeUrl" target="_blank" class="text-xs font-semibold tracking-wider uppercase text-slate-500 hover:text-slate-900 transition duration-200">
                     Résumé
                 </a>
                 
-                <!-- Micro Interactive Email Pill -->
+                <!-- Interactive Copy-to-Clipboard Email Pill -->
                 <div 
                     x-data="{ copied: false }" 
                     @click="navigator.clipboard.writeText(personal.email); copied = true; setTimeout(() => copied = false, 2000)"
-                    class="relative flex items-center gap-2 bg-white/[0.04] hover:bg-white/[0.08] border border-white/[0.08] rounded-full px-4 py-1.5 cursor-pointer transition duration-200 select-none group"
+                    class="relative flex items-center gap-2 bg-white/80 hover:bg-white border border-slate-200/80 rounded-full px-4 py-1.5 cursor-pointer transition duration-200 select-none group shadow-sm"
                 >
-                    <span class="text-xs font-medium text-slate-300 group-hover:text-white transition" x-text="personal.email"></span>
+                    <span class="text-xs font-medium text-slate-600 group-hover:text-slate-900 transition" x-text="personal.email"></span>
                     <div class="relative w-3.5 h-3.5 flex items-center justify-center">
-                        <!-- Copy Icon -->
-                        <i data-lucide="copy" x-show="!copied" class="w-3 h-3 text-slate-400 group-hover:text-white absolute transition"></i>
-                        <!-- Checkmark -->
-                        <i data-lucide="check" x-show="copied" x-transition class="w-3.5 h-3.5 text-emerald-400 absolute"></i>
+                        <i data-lucide="copy" x-show="!copied" class="w-3 h-3 text-slate-400 group-hover:text-slate-700 absolute transition"></i>
+                        <i data-lucide="check" x-show="copied" x-transition class="w-3.5 h-3.5 text-emerald-600 absolute"></i>
                     </div>
-                    <!-- Tooltip -->
-                    <div x-show="copied" x-transition class="absolute bottom-[-35px] left-1/2 -translate-x-1/2 bg-emerald-500 text-dark-900 text-[10px] font-bold px-2 py-1 rounded shadow-md pointer-events-none whitespace-nowrap">
+                    <!-- Tooltip feedback -->
+                    <div x-show="copied" x-transition class="absolute bottom-[-35px] left-1/2 -translate-x-1/2 bg-slate-900 text-white text-[10px] font-bold px-2.5 py-1 rounded shadow-md pointer-events-none whitespace-nowrap">
                         Copied to clipboard
                     </div>
                 </div>
@@ -77,64 +142,81 @@
         </div>
     </nav>
 
-    <!-- Main Workspace -->
-    <main class="max-w-5xl mx-auto px-6 py-12 space-y-16">
 
-        <!-- Frosted Hero Panel -->
-        <header class="relative p-8 md:p-12 rounded-3xl bg-white/[0.02] border border-white/[0.08] shadow-[0_16px_48px_rgba(0,0,0,0.4)] backdrop-blur-2xl overflow-hidden group">
-            <!-- Glass Shimmer -->
-            <div class="absolute inset-0 bg-gradient-to-b from-white/[0.04] to-transparent pointer-events-none"></div>
-            
-            <div class="relative z-10 space-y-6 max-w-3xl">
-                <span class="text-xs font-bold text-indigo-400 tracking-widest uppercase" x-text="personal.title"></span>
-                <h1 class="text-4xl md:text-5xl font-extrabold text-white tracking-tight leading-tight">
-                    Hey! I'm <span class="bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent">William.</span>
+    <!-- ========================================================================= -->
+    <!--  [02] HERO / MANIFESTO CONTAINER                                         -->
+    <!-- ========================================================================= -->
+    <main class="max-w-5xl mx-auto px-6 py-12 space-y-12 relative z-10">
+
+        <header class="glass-panel p-8 md:p-12 rounded-3xl space-y-8">
+            <!-- Hero Introduction -->
+            <div class="space-y-4">
+                <span class="text-xs font-bold text-brand-500 tracking-widest uppercase" x-text="personal.title"></span>
+                <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight leading-tight bg-gradient-to-r from-slate-950 to-slate-800 bg-clip-text text-transparent">
+                    Hey! I'm William.
                 </h1>
-                <p class="text-base md:text-lg text-slate-400 leading-relaxed" x-text="personal.tagline"></p>
-                <p class="text-sm md:text-base text-slate-400 leading-relaxed" x-text="personal.subtagline"></p>
+                <p class="text-base md:text-lg text-slate-600 leading-relaxed font-normal" x-text="personal.tagline"></p>
+                <p class="text-sm md:text-base text-slate-500 leading-relaxed" x-text="personal.subtagline"></p>
+            </div>
+
+            <!-- Progressive Anti-Gimmick Manifesto -->
+            <div class="border-t border-slate-200/80 pt-8 space-y-6">
+                <h3 class="text-xs font-bold text-slate-400 tracking-wider uppercase">The Anti-Gimmick Manifesto</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
+                    <template x-for="item in manifesto">
+                        <div class="space-y-1.5 p-4 bg-white/40 border border-slate-200/50 rounded-xl">
+                            <h4 class="font-bold text-slate-900 flex items-center gap-2">
+                                <span class="text-brand-500" x-text="item.number"></span>
+                                <span x-text="item.heading"></span>
+                            </h4>
+                            <p class="text-slate-600 leading-relaxed" x-text="item.body"></p>
+                        </div>
+                    </template>
+                </div>
             </div>
         </header>
 
-        <!-- Case Studies Grid -->
+
+        <!-- ========================================================================= -->
+        <!--  [03] LAUNCHED WORK SHOWCASE (GRID CARDS)                                -->
+        <!-- ========================================================================= -->
         <section class="space-y-8">
             <div>
-                <span class="text-xs font-bold text-indigo-400 tracking-wider uppercase">Case Studies</span>
-                <h2 class="text-2xl font-extrabold text-white mt-1">Launched Solutions</h2>
+                <span class="text-xs font-bold text-brand-500 tracking-wider uppercase">Work Showcase</span>
+                <h2 class="text-2xl font-extrabold text-slate-900 mt-1">Launched Projects</h2>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Active Case Studies -->
                 <template x-for="study in caseStudies">
-                    <div class="bg-white/[0.01] border border-white/[0.06] rounded-2xl overflow-hidden shadow-lg transition-all duration-300 hover:border-white/[0.12] hover:-translate-y-1 hover:shadow-2xl flex flex-col group">
+                    <div class="glass-panel rounded-2xl overflow-hidden flex flex-col group">
                         
                         <!-- Visual Container -->
-                        <div class="relative aspect-[16/10] bg-dark-800 overflow-hidden flex items-center justify-center p-6 border-b border-white/[0.06]">
-                            <!-- Static mockup pattern -->
-                            <div class="absolute inset-0 bg-gradient-to-tr from-indigo-950/20 to-emerald-950/10 pointer-events-none"></div>
-                            
-                            <!-- Dynamic metric badge -->
-                            <span class="absolute top-4 right-4 text-[10px] font-bold px-2.5 py-1 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 rounded-full tracking-wider uppercase" x-text="study.metric"></span>
+                        <div class="relative aspect-[16/10] bg-slate-100 overflow-hidden flex items-center justify-center p-6 border-b border-slate-200/60">
+                            <!-- Impact KPI Badge -->
+                            <span class="absolute top-4 right-4 text-[10px] font-bold px-2.5 py-1 bg-emerald-50 border border-emerald-200 text-emerald-700 rounded-full tracking-wider uppercase" x-text="study.metric"></span>
                             
                             <div class="text-center space-y-2 z-10">
-                                <div class="w-12 h-12 rounded-xl bg-white/[0.04] border border-white/[0.08] flex items-center justify-center mx-auto text-indigo-400">
+                                <div class="w-12 h-12 rounded-xl bg-white flex items-center justify-center mx-auto text-brand-500 shadow-sm border border-slate-200/50">
                                     <i :data-lucide="study.icon" class="w-5 h-5"></i>
                                 </div>
-                                <span class="block text-[11px] text-slate-400 font-mono tracking-wider" x-text="study.techUsed"></span>
+                                <span class="block text-[11px] text-slate-500 font-mono tracking-wider" x-text="study.techUsed"></span>
                             </div>
                         </div>
 
-                        <!-- Card Info -->
+                        <!-- Card Metadata & Description -->
                         <div class="p-6 space-y-4 flex-grow flex flex-col justify-between">
                             <div class="space-y-2">
-                                <h3 class="font-bold text-lg text-white group-hover:text-indigo-300 transition" x-text="study.title"></h3>
-                                <p class="text-xs text-slate-400 font-medium" x-text="study.subtitle"></p>
-                                <p class="text-sm text-slate-400 leading-relaxed pt-2" x-text="study.desc"></p>
+                                <h3 class="font-bold text-lg text-slate-900 group-hover:text-brand-500 transition duration-200" x-text="study.title"></h3>
+                                <p class="text-xs text-slate-500 font-semibold" x-text="study.subtitle"></p>
+                                <p class="text-sm text-slate-600 leading-relaxed pt-2" x-text="study.desc"></p>
                             </div>
                             
-                            <!-- Key Points list -->
-                            <ul class="space-y-2.5 pt-4 border-t border-white/[0.04] text-xs text-slate-400">
+                            <!-- Key Technical Deliverables -->
+                            <ul class="space-y-2.5 pt-4 border-t border-slate-200/50 text-xs text-slate-600">
                                 <template x-for="point in study.points">
                                     <li class="flex gap-2.5 items-start">
-                                        <i data-lucide="arrow-right" class="w-3.5 h-3.5 text-indigo-400 mt-0.5 flex-shrink-0"></i>
+                                        <i data-lucide="arrow-right" class="w-3.5 h-3.5 text-brand-500 mt-0.5 flex-shrink-0"></i>
                                         <span x-text="point"></span>
                                     </li>
                                 </template>
@@ -143,32 +225,35 @@
                     </div>
                 </template>
 
-                <!-- Professional Locked NDA Card -->
-                <div class="bg-white/[0.01] border border-white/[0.04] rounded-2xl overflow-hidden flex flex-col relative group select-none">
-                    <div class="absolute inset-0 bg-dark-900/60 backdrop-blur-[4px] z-20 flex flex-col items-center justify-center p-6 text-center space-y-3">
-                        <div class="w-10 h-10 rounded-full bg-white/[0.04] border border-white/[0.08] flex items-center justify-center text-slate-400">
+                <!-- Professional NDA Locked Card -->
+                <div class="glass-panel rounded-2xl overflow-hidden flex flex-col relative group select-none">
+                    <div class="absolute inset-0 bg-white/90 backdrop-blur-[2px] z-20 flex flex-col items-center justify-center p-6 text-center space-y-3">
+                        <div class="w-10 h-10 rounded-full bg-slate-100 border border-slate-200/80 flex items-center justify-center text-slate-600 shadow-sm">
                             <i data-lucide="lock" class="w-4 h-4"></i>
                         </div>
-                        <p class="text-xs font-semibold text-slate-200">Proprietary Enterprise Work</p>
-                        <p class="text-[11px] text-slate-400 max-w-[240px] leading-relaxed">Staria NetSuite automations and payroll pipelines are protected under NDA. Details available upon request during interviews.</p>
+                        <p class="text-xs font-bold text-slate-900">Proprietary Enterprise Work</p>
+                        <p class="text-[11px] text-slate-600 max-w-[250px] leading-relaxed">Financial integrations and NetSuite ledger automations are protected under NDA. Architectures can be shared during interview settings.</p>
                     </div>
 
-                    <div class="aspect-[16/10] bg-dark-800 flex items-center justify-center border-b border-white/[0.04] opacity-30">
-                        <i data-lucide="cpu" class="w-8 h-8 text-slate-600"></i>
+                    <div class="aspect-[16/10] bg-slate-100 flex items-center justify-center border-b border-slate-200/50 opacity-20">
+                        <i data-lucide="cpu" class="w-8 h-8 text-slate-400"></i>
                     </div>
-                    <div class="p-6 space-y-2 opacity-30">
-                        <h3 class="font-bold text-lg text-white">Automated ERP Financial Reconciliation</h3>
-                        <p class="text-xs text-slate-400">Low-Code & ERP Systems Integration</p>
+                    <div class="p-6 space-y-2 opacity-20">
+                        <h3 class="font-bold text-lg text-slate-900">Automated ERP Financial Reconciliation</h3>
+                        <p class="text-xs text-slate-500">Low-Code & ERP Systems Integration</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Technical Stack Minimalist Display -->
-        <section id="tech" class="space-y-6 pt-8 border-t border-white/[0.06]">
+
+        <!-- ========================================================================= -->
+        <!--  [04] CAPABILITY DIRECTORY (TECHNICAL STACK)                              -->
+        <!-- ========================================================================= -->
+        <section id="tech" class="space-y-6 pt-8 border-t border-slate-200/80">
             <div>
-                <span class="text-xs font-bold text-indigo-400 tracking-wider uppercase">Capability Directory</span>
-                <h2 class="text-xl font-bold text-white mt-1">Core Tech Stack</h2>
+                <span class="text-xs font-bold text-brand-500 tracking-wider uppercase">Capability Directory</span>
+                <h2 class="text-xl font-bold text-slate-900 mt-1">Core Tech Stack</h2>
             </div>
             
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 text-xs">
@@ -177,7 +262,7 @@
                         <h3 class="text-slate-400 font-bold uppercase tracking-wider" x-text="category.replace(/([A-Z])/g, ' $1')"></h3>
                         <div class="flex flex-wrap gap-1.5">
                             <template x-for="tech in stack">
-                                <span class="bg-white/[0.02] border border-white/[0.06] text-slate-300 px-2.5 py-1.5 rounded-md" x-text="tech"></span>
+                                <span class="bg-white border border-slate-200/80 text-slate-600 px-2.5 py-1.5 rounded-md shadow-sm" x-text="tech"></span>
                             </template>
                         </div>
                     </div>
@@ -187,40 +272,68 @@
 
     </main>
 
-    <!-- Footer -->
-    <footer class="border-t border-white/[0.06] py-12 text-slate-500 text-xs text-center space-y-4 relative z-10">
-        <p x-text="'© 2026 ' + personal.name + ' . Custom crafted via Tailwind & Alpine.'"></p>
-        <div class="flex justify-center gap-6">
-            <a :href="personal.github" target="_blank" class="hover:text-white transition">GitHub</a>
-            <a :href="personal.linkedin" target="_blank" class="hover:text-white transition">LinkedIn</a>
-            <a :href="'mailto:' + personal.email" class="hover:text-white transition">Email</a>
+
+    <!-- ========================================================================= -->
+    <!--  [05] GLOBAL FOOTER & SOCIALS                                            -->
+    <!-- ========================================================================= -->
+    <footer class="border-t border-slate-200/80 py-12 text-slate-400 text-xs text-center space-y-4 relative z-10">
+        <p x-text="'© 2026 ' + personal.name + ' • Custom crafted via Tailwind & Alpine.'"></p>
+        <div class="flex justify-center gap-6 text-slate-500">
+            <a :href="personal.github" target="_blank" class="hover:text-slate-900 transition">GitHub</a>
+            <a :href="personal.linkedin" target="_blank" class="hover:text-slate-900 transition">LinkedIn</a>
+            <a :href="'mailto:' + personal.email" class="hover:text-slate-900 transition">Email</a>
         </div>
     </footer>
 
-    <!-- Alpine.js Portfolio Object -->
+
+    <!-- ========================================================================= -->
+    <!--  [06] ALPINE CMS ENGINE / DATA STORE                                     -->
+    <!-- ========================================================================= -->
     <script>
         document.addEventListener('alpine:init', () => {
             Alpine.data('portfolio', () => ({
                 personal: {
                     name: "William Burden",
                     title: "AI & Process Automation Specialist",
-                    tagline: "I specialize in spaces where manual processes create operational friction. Whether it is integrating AI agents, setting up structured prompt pipelines, or mapping workflows from scratch, I thrive in translating technical complexity into streamlined business solutions.",
-                    subtagline: "I look at the business logic as much as the low-code integrations—ensuring that every pipeline is designed directly around the teams who use them, minimizing manual errors and maximizing efficiency.",
+                    tagline: "I spend a lot of time thinking about the macro-effects of automation, algorithms, and organizations. Because of this, I approach process development with an acute awareness of organizational change dynamics, tacit employee knowledge, and human-in-the-loop workflow architecture.",
+                    subtagline: "I believe in managing code and projects with enough technical leverage to kill a horse: writing custom Javascript scripts, regex parsing engines, and tracking installations so that automation cleanly serves both real and robotic operators.",
                     email: "web993@gmail.com",
-                    resumeUrl: "resume.pdf", /* Upload your resume PDF named resume.pdf to your repo root */
+                    resumeUrl: "resume.pdf", 
                     linkedin: "https://www.linkedin.com/in/williamburden", 
                     github: "https://github.com/unburdenweb"
                 },
+                manifesto: [
+                    {
+                        number: "01",
+                        heading: "Deterministic Logic over Chatbots",
+                        body: "AI shouldn't be a flaky text box. In business pipelines, I enforce rigid JSON schema structures via Claude/OpenAI APIs, wrapping the output in secure, local JavaScript validation code. We need deterministic outcomes, not guesswork."
+                    },
+                    {
+                        number: "02",
+                        heading: "Cognitive Load Management",
+                        body: "If an automated workflow requires an employee to constantly second-guess or verify raw AI outputs, the cognitive load hasn't been reduced—it has just shifted. I design pipelines where human checkpoints exist only where qualitative judgment is mandatory."
+                    },
+                    {
+                        number: "03",
+                        heading: "Invisible & Zero-Friction",
+                        body: "Forcing operators to abandon their existing platforms to manage a clunky new custom tool is an anti-pattern. Excellent automation operates silently in the background, updating NetSuite, custom databases, or Excel sheets natively."
+                    },
+                    {
+                        number: "04",
+                        heading: "Socio-Technical Process Architecture",
+                        body: "I don't automate just to speed up loops. I map organizational workflows, shadow teams to capture tacit habits, and constructively challenge legacy processes. True automation is about reallocating human capital to strategic foresight."
+                    }
+                ],
                 techStack: {
                     lowCode: ["n8n", "Make", "Zapier", "Power Automate"],
-                    aiAutomation: ["Claude", "OpenAI / API", "Prompt Engineering", "Copilot"],
-                    languages: ["JavaScript", "PHP", "HTML5 / CSS3", "Fuzzy Logic / RegEx"],
-                    operations: ["ERP / CRM Connections", "Data Validation", "Google Sheets / Excel", "Process Mapping"]
+                    aiAutomation: ["Claude / Anthropic", "OpenAI API", "Structured Prompting", "JSON Schema Enforcement"],
+                    languages: ["JavaScript (ES6)", "PHP", "HTML5 / CSS3", "Fuzzy Logic / RegEx"],
+                    operations: ["ERP Integrations", "Data Validation", "Google Sheets / Excel", "Workflow Shadowing"]
                 },
                 caseStudies: [
                     {
                         title: "AI-Powered AP Invoice Pipeline",
-                        subtitle: "Automating validation and sorting inside accounts payable",
+                        subtitle: "Automating validation and structured sorting inside accounts payable",
                         metric: "90% Reduction in manual entry",
                         icon: "file-text",
                         techUsed: "n8n • Claude API • Custom JS",
@@ -244,7 +357,20 @@
                             "Re-architected tracking workflows so digital campaigns scaled smoothly without administrative overhead."
                         ]
                     }
-                ]
+                ],
+                
+                // Initialization and Console logs for inspecting developers
+                init() {
+                    this.$nextTick(() => {
+                        lucide.createIcons();
+                    });
+                    
+                    console.log(
+                        "%c ⚡ UNBURDEN.WEB %c- Glad you checked the DevTools. Enjoy looking around! (web993@gmail.com)",
+                        "color: #105c8a; font-weight: bold; font-size: 13px; background: #e0efff; padding: 4px 8px; border-radius: 4px; font-family: sans-serif;",
+                        "color: #105c8a; font-weight: bold; font-family: monospace; font-size: 11px;"
+                    );
+                }
             }));
         });
     </script>
