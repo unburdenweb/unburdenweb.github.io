@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>William Burden - Senior Community Manager</title>
+    <style>
+        :root {
+            --primary-color: #105c8a; /* Accent Blue */
+            --text-dark: #2c3e50;
+            --text-light: #555;
+            --font-stack: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            font-family: var(--font-stack);
+            color: var(--text-dark);
+            line-height: 1.6;
+            margin: 0;
+            padding: 40px 20px;
+            background-color: #fcfcfc;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 40px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-radius: 4px;
+        }
+
+        /* Header Layout */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            border-bottom: 2px solid #eaeaea;
+            padding-bottom: 25px;
+            margin-bottom: 30px;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .profile-img {
+            width: 110px;
+            height: 110px;
+            border-radius: 4px;
+            object-fit: cover;
+        }
+
+        .title-block h1 {
+            color: var(--primary-color);
+            margin: 0;
+            font-size: 2.2rem;
+            letter-spacing: -0.5px;
+        }
+
+        .title-block h2 {
+            font-weight: 400;
+            color: var(--text-light);
+            margin: 5px 0 0 0;
+            font-size: 1.2rem;
+        }
+
+        .contact-info {
+            text-align: right;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .contact-info a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        /* Summary with Blue Accent Line */
+        .summary-section {
+            display: flex;
+            margin-bottom: 40px;
+        }
+
+        .blue-accent-line {
+            width: 6px;
+            background-color: var(--primary-color);
+            margin-right: 25px;
+            flex-shrink: 0;
+        }
+
+        .summary-text p {
+            margin: 0 0 15px 0;
+            color: var(--text-light);
+            font-size: 1rem;
+        }
+
+        /* General Section Styling */
+        section {
+            margin-bottom: 40px;
+        }
+
+        h3.section-title {
+            color: var(--primary-color);
+            font-size: 1.3rem;
+            border-bottom: 1px solid #eaeaea;
+            padding-bottom: 5px;
+            margin-top: 0;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Technical Proficiencies Grid */
+        .tech-grid {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            row-gap: 12px;
+            font-size: 0.95rem;
+        }
+
+        .tech-label {
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        /* Career Experience Items */
+        .job-item {
+            margin-bottom: 30px;
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            font-weight: bold;
+            font-size: 1.05rem;
+        }
+
+        .job-title {
+            color: var(--primary-color);
+            font-style: italic;
+            margin: 2px 0 12px 0;
+            font-size: 0.95rem;
+        }
+
+        .job-desc {
+            color: var(--text-light);
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+        }
+
+        ul {
+            margin: 0;
+            padding-left: 20px;
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        /* Responsive Layout for Mobile */
+        @media (max-width: 768px) {
+            header, .job-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .contact-info {
+                text-align: left;
+                margin-top: 15px;
+            }
+            .tech-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <div class="header-left">
+            <!-- Replace with your actual image path -->
+            <img src="your-photo.jpg" alt="William Burden" class="profile-img">
+            <div class="title-block">
+                <h1>WILLIAM BURDEN</h1>
+                <h2>Senior Community Manager</h2>
+            </div>
+        </div>
+        <div class="contact-info">
+            <p>+358 44 92 64324<br>
+            <a href="mailto:web993@gmail.com">web993@gmail.com</a><br>
+            <a href="#">LinkedIn</a> • Helsinki, FI<br>
+            <strong>Canadian • He/Him</strong></p>
+        </div>
+    </header>
+
+    <div class="summary-section">
+        <div class="blue-accent-line"></div>
+        <div class="summary-text">
+            <p>Accomplished Senior Community Manager with over a decade of experience scaling global gaming, esports, and interactive entertainment communities...</p>
+            <p>Highly experienced in balancing high-level strategy with daily player-first execution...</p>
+        </div>
+    </div>
+
+    <section>
+        <h3 class="section-title">Technical Proficiencies</h3>
+        <div class="tech-grid">
+            <div class="tech-label">Programming Languages:</div>
+            <div>HTML5, PHP, CSS, JavaScript, focused on responsive front-end development.</div>
+
+            <div class="tech-label">Software:</div>
+            <div>Adobe Photoshop, Illustrator, DaVinci Resolve, After Effects</div>
+
+            <div class="tech-label">Web/Analytics/MarOps:</div>
+            <div>WordPress, Wix, Shopify, Google Analytics, Tag Manager, Meta Ads Manager.</div>
+        </div>
+    </section>
+
+    <section>
+        <h3 class="section-title">Career Experience</h3>
+        
+        <div class="job-item">
+            <div class="job-header">
+                <span>Sole Proprietorship, International</span>
+                <span>Sep 2016 – Dec 2019, Jan 2023 – Present</span>
+            </div>
+            <div class="job-title">Marketing Operations and Digital Ads</div>
+            <p class="job-desc">As a seasoned Marketing Operations and Digital Ads Specialist, my skills have made it possible for me to work directly with numerous small and medium businesses...</p>
+            <ul>
+                <li>Automated digital advertising operations while growing conversion rates by 250%...</li>
+                <li>Consulted and led website redesigns and built out systems...</li>
+            </ul>
+        </div>
+
+        <!-- Add more job items following this structure -->
+    </section>
+</div>
+
+</body>
+</html>
