@@ -1,244 +1,252 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="scroll-behavior: smooth;">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>William Burden - Senior Community Manager</title>
+    <title>William Burden — AI & Process Automation</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Alpine.js CDN for clean, reactive logic -->
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: {
+                            900: '#070913', /* Deep space black background */
+                            800: '#0f1123', /* Frosted card base */
+                            700: '#1b1d36'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        :root {
-            --primary-color: #105c8a; /* Accent Blue */
-            --text-dark: #2c3e50;
-            --text-light: #555;
-            --font-stack: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: #070913;
         }
-
-        body {
-            font-family: var(--font-stack);
-            color: var(--text-dark);
-            line-height: 1.6;
-            margin: 0;
-            padding: 40px 20px;
-            background-color: #fcfcfc;
-        }
-
-        .container {
-            max-width: 850px;
-            margin: 0 auto;
-            background: #fff;
-            padding: 40px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            border-radius: 4px;
-        }
-
-        /* Header Layout */
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            border-bottom: 2px solid #eaeaea;
-            padding-bottom: 25px;
-            margin-bottom: 30px;
-        }
-
-        .header-left {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .profile-img {
-            width: 110px;
-            height: 110px;
-            border-radius: 4px;
-            object-fit: cover;
-        }
-
-        .title-block h1 {
-            color: var(--primary-color);
-            margin: 0;
-            font-size: 2.2rem;
-            letter-spacing: -0.5px;
-        }
-
-        .title-block h2 {
-            font-weight: 400;
-            color: var(--text-light);
-            margin: 5px 0 0 0;
-            font-size: 1.2rem;
-        }
-
-        .contact-info {
-            text-align: right;
-            font-size: 0.9rem;
-            color: var(--text-light);
-        }
-
-        .contact-info a {
-            color: var(--primary-color);
-            text-decoration: none;
-        }
-
-        /* Summary with Blue Accent Line */
-        .summary-section {
-            display: flex;
-            margin-bottom: 40px;
-        }
-
-        .blue-accent-line {
-            width: 6px;
-            background-color: var(--primary-color);
-            margin-right: 25px;
-            flex-shrink: 0;
-        }
-
-        .summary-text p {
-            margin: 0 0 15px 0;
-            color: var(--text-light);
-            font-size: 1rem;
-        }
-
-        /* General Section Styling */
-        section {
-            margin-bottom: 40px;
-        }
-
-        h3.section-title {
-            color: var(--primary-color);
-            font-size: 1.3rem;
-            border-bottom: 1px solid #eaeaea;
-            padding-bottom: 5px;
-            margin-top: 0;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        /* Technical Proficiencies Grid */
-        .tech-grid {
-            display: grid;
-            grid-template-columns: 200px 1fr;
-            row-gap: 12px;
-            font-size: 0.95rem;
-        }
-
-        .tech-label {
-            font-weight: bold;
-            color: var(--primary-color);
-        }
-
-        /* Career Experience Items */
-        .job-item {
-            margin-bottom: 30px;
-        }
-
-        .job-header {
-            display: flex;
-            justify-content: space-between;
-            font-weight: bold;
-            font-size: 1.05rem;
-        }
-
-        .job-title {
-            color: var(--primary-color);
-            font-style: italic;
-            margin: 2px 0 12px 0;
-            font-size: 0.95rem;
-        }
-
-        .job-desc {
-            color: var(--text-light);
-            margin-bottom: 12px;
-            font-size: 0.95rem;
-        }
-
-        ul {
-            margin: 0;
-            padding-left: 20px;
-            color: var(--text-light);
-            font-size: 0.95rem;
-        }
-
-        li {
-            margin-bottom: 8px;
-        }
-
-        /* Responsive Layout for Mobile */
-        @media (max-width: 768px) {
-            header, .job-header {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            .contact-info {
-                text-align: left;
-                margin-top: 15px;
-            }
-            .tech-grid {
-                grid-template-columns: 1fr;
-            }
-        }
+        /* Custom scrollbar to keep it sleek */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #070913; }
+        ::-webkit-scrollbar-thumb { background: #1b1d36; border-radius: 4px; }
     </style>
 </head>
-<body>
+<body class="text-slate-100 antialiased relative min-h-screen overflow-x-hidden" x-data="portfolio" x-init="lucide.createIcons()">
 
-<div class="container">
-    <header>
-        <div class="header-left">
-            <!-- Replace with your actual image path -->
-            <img src="your-photo.jpg" alt="William Burden" class="profile-img">
-            <div class="title-block">
-                <h1>WILLIAM BURDEN</h1>
-                <h2>Senior Community Manager</h2>
+    <!-- Ambient background glows -->
+    <div class="absolute top-[-10%] left-[20%] w-[600px] h-[600px] rounded-full bg-indigo-900/10 blur-[120px] pointer-events-none"></div>
+    <div class="absolute bottom-[20%] right-[10%] w-[500px] h-[500px] rounded-full bg-emerald-900/5 blur-[100px] pointer-events-none"></div>
+
+    <!-- Header Navigation -->
+    <nav class="sticky top-0 z-50 bg-dark-900/70 backdrop-blur-md border-b border-white/[0.06]">
+        <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
+            <span class="font-bold text-sm tracking-tight text-white" x-text="personal.name"></span>
+            
+            <div class="flex items-center gap-6">
+                <!-- Resume Link -->
+                <a :href="personal.resumeUrl" target="_blank" class="text-xs font-semibold tracking-wider uppercase text-slate-400 hover:text-white transition duration-200">
+                    Résumé
+                </a>
+                
+                <!-- Micro Interactive Email Pill -->
+                <div 
+                    x-data="{ copied: false }" 
+                    @click="navigator.clipboard.writeText(personal.email); copied = true; setTimeout(() => copied = false, 2000)"
+                    class="relative flex items-center gap-2 bg-white/[0.04] hover:bg-white/[0.08] border border-white/[0.08] rounded-full px-4 py-1.5 cursor-pointer transition duration-200 select-none group"
+                >
+                    <span class="text-xs font-medium text-slate-300 group-hover:text-white transition" x-text="personal.email"></span>
+                    <div class="relative w-3.5 h-3.5 flex items-center justify-center">
+                        <!-- Copy Icon -->
+                        <i data-lucide="copy" x-show="!copied" class="w-3 h-3 text-slate-400 group-hover:text-white absolute transition"></i>
+                        <!-- Checkmark -->
+                        <i data-lucide="check" x-show="copied" x-transition class="w-3.5 h-3.5 text-emerald-400 absolute"></i>
+                    </div>
+                    <!-- Tooltip -->
+                    <div x-show="copied" x-transition class="absolute bottom-[-35px] left-1/2 -translate-x-1/2 bg-emerald-500 text-dark-900 text-[10px] font-bold px-2 py-1 rounded shadow-md pointer-events-none whitespace-nowrap">
+                        Copied to clipboard
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="contact-info">
-            <p>+358 44 92 64324<br>
-            <a href="mailto:web993@gmail.com">web993@gmail.com</a><br>
-            <a href="#">LinkedIn</a> • Helsinki, FI<br>
-            <strong>Canadian • He/Him</strong></p>
-        </div>
-    </header>
+    </nav>
 
-    <div class="summary-section">
-        <div class="blue-accent-line"></div>
-        <div class="summary-text">
-            <p>Accomplished Senior Community Manager with over a decade of experience scaling global gaming, esports, and interactive entertainment communities...</p>
-            <p>Highly experienced in balancing high-level strategy with daily player-first execution...</p>
-        </div>
-    </div>
+    <!-- Main Workspace -->
+    <main class="max-w-5xl mx-auto px-6 py-12 space-y-16">
 
-    <section>
-        <h3 class="section-title">Technical Proficiencies</h3>
-        <div class="tech-grid">
-            <div class="tech-label">Programming Languages:</div>
-            <div>HTML5, PHP, CSS, JavaScript, focused on responsive front-end development.</div>
-
-            <div class="tech-label">Software:</div>
-            <div>Adobe Photoshop, Illustrator, DaVinci Resolve, After Effects</div>
-
-            <div class="tech-label">Web/Analytics/MarOps:</div>
-            <div>WordPress, Wix, Shopify, Google Analytics, Tag Manager, Meta Ads Manager.</div>
-        </div>
-    </section>
-
-    <section>
-        <h3 class="section-title">Career Experience</h3>
-        
-        <div class="job-item">
-            <div class="job-header">
-                <span>Sole Proprietorship, International</span>
-                <span>Sep 2016 – Dec 2019, Jan 2023 – Present</span>
+        <!-- Frosted Hero Panel -->
+        <header class="relative p-8 md:p-12 rounded-3xl bg-white/[0.02] border border-white/[0.08] shadow-[0_16px_48px_rgba(0,0,0,0.4)] backdrop-blur-2xl overflow-hidden group">
+            <!-- Glass Shimmer -->
+            <div class="absolute inset-0 bg-gradient-to-b from-white/[0.04] to-transparent pointer-events-none"></div>
+            
+            <div class="relative z-10 space-y-6 max-w-3xl">
+                <span class="text-xs font-bold text-indigo-400 tracking-widest uppercase" x-text="personal.title"></span>
+                <h1 class="text-4xl md:text-5xl font-extrabold text-white tracking-tight leading-tight">
+                    Hey! I'm <span class="bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent">William.</span>
+                </h1>
+                <p class="text-base md:text-lg text-slate-400 leading-relaxed" x-text="personal.tagline"></p>
+                <p class="text-sm md:text-base text-slate-400 leading-relaxed" x-text="personal.subtagline"></p>
             </div>
-            <div class="job-title">Marketing Operations and Digital Ads</div>
-            <p class="job-desc">As a seasoned Marketing Operations and Digital Ads Specialist, my skills have made it possible for me to work directly with numerous small and medium businesses...</p>
-            <ul>
-                <li>Automated digital advertising operations while growing conversion rates by 250%...</li>
-                <li>Consulted and led website redesigns and built out systems...</li>
-            </ul>
+        </header>
+
+        <!-- Case Studies Grid -->
+        <section class="space-y-8">
+            <div>
+                <span class="text-xs font-bold text-indigo-400 tracking-wider uppercase">Case Studies</span>
+                <h2 class="text-2xl font-extrabold text-white mt-1">Launched Solutions</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <template x-for="study in caseStudies">
+                    <div class="bg-white/[0.01] border border-white/[0.06] rounded-2xl overflow-hidden shadow-lg transition-all duration-300 hover:border-white/[0.12] hover:-translate-y-1 hover:shadow-2xl flex flex-col group">
+                        
+                        <!-- Visual Container -->
+                        <div class="relative aspect-[16/10] bg-dark-800 overflow-hidden flex items-center justify-center p-6 border-b border-white/[0.06]">
+                            <!-- Static mockup pattern -->
+                            <div class="absolute inset-0 bg-gradient-to-tr from-indigo-950/20 to-emerald-950/10 pointer-events-none"></div>
+                            
+                            <!-- Dynamic metric badge -->
+                            <span class="absolute top-4 right-4 text-[10px] font-bold px-2.5 py-1 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 rounded-full tracking-wider uppercase" x-text="study.metric"></span>
+                            
+                            <div class="text-center space-y-2 z-10">
+                                <div class="w-12 h-12 rounded-xl bg-white/[0.04] border border-white/[0.08] flex items-center justify-center mx-auto text-indigo-400">
+                                    <i :data-lucide="study.icon" class="w-5 h-5"></i>
+                                </div>
+                                <span class="block text-[11px] text-slate-400 font-mono tracking-wider" x-text="study.techUsed"></span>
+                            </div>
+                        </div>
+
+                        <!-- Card Info -->
+                        <div class="p-6 space-y-4 flex-grow flex flex-col justify-between">
+                            <div class="space-y-2">
+                                <h3 class="font-bold text-lg text-white group-hover:text-indigo-300 transition" x-text="study.title"></h3>
+                                <p class="text-xs text-slate-400 font-medium" x-text="study.subtitle"></p>
+                                <p class="text-sm text-slate-400 leading-relaxed pt-2" x-text="study.desc"></p>
+                            </div>
+                            
+                            <!-- Key Points list -->
+                            <ul class="space-y-2.5 pt-4 border-t border-white/[0.04] text-xs text-slate-400">
+                                <template x-for="point in study.points">
+                                    <li class="flex gap-2.5 items-start">
+                                        <i data-lucide="arrow-right" class="w-3.5 h-3.5 text-indigo-400 mt-0.5 flex-shrink-0"></i>
+                                        <span x-text="point"></span>
+                                    </li>
+                                </template>
+                            </ul>
+                        </div>
+                    </div>
+                </template>
+
+                <!-- Professional Locked NDA Card -->
+                <div class="bg-white/[0.01] border border-white/[0.04] rounded-2xl overflow-hidden flex flex-col relative group select-none">
+                    <div class="absolute inset-0 bg-dark-900/60 backdrop-blur-[4px] z-20 flex flex-col items-center justify-center p-6 text-center space-y-3">
+                        <div class="w-10 h-10 rounded-full bg-white/[0.04] border border-white/[0.08] flex items-center justify-center text-slate-400">
+                            <i data-lucide="lock" class="w-4 h-4"></i>
+                        </div>
+                        <p class="text-xs font-semibold text-slate-200">Proprietary Enterprise Work</p>
+                        <p class="text-[11px] text-slate-400 max-w-[240px] leading-relaxed">Staria NetSuite automations and payroll pipelines are protected under NDA. Details available upon request during interviews.</p>
+                    </div>
+
+                    <div class="aspect-[16/10] bg-dark-800 flex items-center justify-center border-b border-white/[0.04] opacity-30">
+                        <i data-lucide="cpu" class="w-8 h-8 text-slate-600"></i>
+                    </div>
+                    <div class="p-6 space-y-2 opacity-30">
+                        <h3 class="font-bold text-lg text-white">Automated ERP Financial Reconciliation</h3>
+                        <p class="text-xs text-slate-400">Low-Code & ERP Systems Integration</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technical Stack Minimalist Display -->
+        <section id="tech" class="space-y-6 pt-8 border-t border-white/[0.06]">
+            <div>
+                <span class="text-xs font-bold text-indigo-400 tracking-wider uppercase">Capability Directory</span>
+                <h2 class="text-xl font-bold text-white mt-1">Core Tech Stack</h2>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 text-xs">
+                <template x-for="(stack, category) in techStack">
+                    <div class="space-y-3">
+                        <h3 class="text-slate-400 font-bold uppercase tracking-wider" x-text="category.replace(/([A-Z])/g, ' $1')"></h3>
+                        <div class="flex flex-wrap gap-1.5">
+                            <template x-for="tech in stack">
+                                <span class="bg-white/[0.02] border border-white/[0.06] text-slate-300 px-2.5 py-1.5 rounded-md" x-text="tech"></span>
+                            </template>
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/[0.06] py-12 text-slate-500 text-xs text-center space-y-4 relative z-10">
+        <p x-text="'© 2026 ' + personal.name + ' . Custom crafted via Tailwind & Alpine.'"></p>
+        <div class="flex justify-center gap-6">
+            <a :href="personal.github" target="_blank" class="hover:text-white transition">GitHub</a>
+            <a :href="personal.linkedin" target="_blank" class="hover:text-white transition">LinkedIn</a>
+            <a :href="'mailto:' + personal.email" class="hover:text-white transition">Email</a>
         </div>
+    </footer>
 
-        <!-- Add more job items following this structure -->
-    </section>
-</div>
-
+    <!-- Alpine.js Portfolio Object -->
+    <script>
+        document.addEventListener('alpine:init', () => {
+            Alpine.data('portfolio', () => ({
+                personal: {
+                    name: "William Burden",
+                    title: "AI & Process Automation Specialist",
+                    tagline: "I specialize in spaces where manual processes create operational friction. Whether it is integrating AI agents, setting up structured prompt pipelines, or mapping workflows from scratch, I thrive in translating technical complexity into streamlined business solutions.",
+                    subtagline: "I look at the business logic as much as the low-code integrations—ensuring that every pipeline is designed directly around the teams who use them, minimizing manual errors and maximizing efficiency.",
+                    email: "web993@gmail.com",
+                    resumeUrl: "resume.pdf", /* Upload your resume PDF named resume.pdf to your repo root */
+                    linkedin: "https://www.linkedin.com/in/williamburden", 
+                    github: "https://github.com/unburdenweb"
+                },
+                techStack: {
+                    lowCode: ["n8n", "Make", "Zapier", "Power Automate"],
+                    aiAutomation: ["Claude", "OpenAI / API", "Prompt Engineering", "Copilot"],
+                    languages: ["JavaScript", "PHP", "HTML5 / CSS3", "Fuzzy Logic / RegEx"],
+                    operations: ["ERP / CRM Connections", "Data Validation", "Google Sheets / Excel", "Process Mapping"]
+                },
+                caseStudies: [
+                    {
+                        title: "AI-Powered AP Invoice Pipeline",
+                        subtitle: "Automating validation and sorting inside accounts payable",
+                        metric: "90% Reduction in manual entry",
+                        icon: "file-text",
+                        techUsed: "n8n • Claude API • Custom JS",
+                        desc: "Replaced an operational bottleneck where team members manually reviewed invoice PDFs, transcribed values, and validated tax figures into a tracking database.",
+                        points: [
+                            "Built an end-to-end n8n workflow resolving document extraction via structured Claude prompt logic.",
+                            "Wrote custom JavaScript nodes inside the workflow to validate mathematical logic and dates.",
+                            "Implemented conditional slack escalations for high-value anomalies while processing standard files autonomously."
+                        ]
+                    },
+                    {
+                        title: "Automated Advertising Operations",
+                        subtitle: "Scaling digital tracking and reporting systems",
+                        metric: "250% Conversion growth",
+                        icon: "trending-up",
+                        techUsed: "API Syncing • Zapier • Google Sheets",
+                        desc: "Consulted for an e-commerce startup (Teacher Resource Cabin) to automate repetitive manual reporting setups, ad metric gathering, and conversion tracking.",
+                        points: [
+                            "Designed automated API syncs mapping ad performance directly to internal dashboards.",
+                            "Overhauled website event tracking codes to ensure high-fidelity data reached reporting funnels.",
+                            "Re-architected tracking workflows so digital campaigns scaled smoothly without administrative overhead."
+                        ]
+                    }
+                ]
+            }));
+        });
+    </script>
 </body>
 </html>
